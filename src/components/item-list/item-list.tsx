@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from './item-list.module.scss';
-import Item from "../card/card";
+import Item from "../card/item";
 
 export default function ItemList () {
     const count = [1,2,3,4,5,6,7,8]

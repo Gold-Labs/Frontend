@@ -1,7 +1,6 @@
 @import "../../mixin";
 
-.item{padding-left: 8px;
-  padding-right: 8px;
+.item{
   width: 338px;
   @include cards__item
 }
