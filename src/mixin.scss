@@ -1,0 +1,19 @@
+@mixin box{
+    background-color: blue;
+}
+@mixin flex-wrap {
+    display: flex;
+    /* Put a card in the next row when previous cards take all width */
+    flex-wrap: wrap;
+}
+
+@mixin cards__item {
+    /* There will be 4 cards per row */
+    flex-basis: 33%;
+
+}
+
+@mixin content-container{
+    max-width: 1050px;
+    margin: auto;
+}
