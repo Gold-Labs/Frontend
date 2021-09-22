@@ -1,6 +1,21 @@
 @mixin box{
     background-color: blue;
 }
+
+@mixin flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@mixin large-input{
+    border :1px solid #dbdbdb;
+    padding: 13px 15px 14px;
+    border-radius: 4px 4px 0px 0px;
+}
+@mixin full-size {
+    width: 100%;
+    height: 100%;
+}
 @mixin flex-wrap {
     display: flex;
     /* Put a card in the next row when previous cards take all width */
@@ -10,7 +25,6 @@
 @mixin cards__item {
     /* There will be 4 cards per row */
     flex-basis: 33%;
-
 }
 
 @mixin content-container{

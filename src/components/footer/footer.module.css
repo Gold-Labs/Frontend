@@ -1,4 +1,8 @@
-.container{
+.footer {
+    width: 100%;
+}
+
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,9 +10,11 @@
     margin: auto;
     font-size: 1.6rem;
     width: 100%;
+
+
 }
 
-.content{
+.content {
     display: flex;
     background-color: green;
     justify-content: space-between;
@@ -16,16 +22,17 @@
     padding: 15px 10px;
 }
 
-.content_main{
+.content_main {
     width: 60%;
     color: white;
 }
 
-.content_main h3{
-    font-size: 2rem;    
+.content_main h3 {
+    font-size: 2rem;
     margin-bottom: 20px;
 }
-.content_main div{
+
+.content_main div {
     line-height: 20px;
 }
 
@@ -33,14 +40,14 @@
 content_button
 */
 
-.content_button{
+.content_button {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
 }
 
-.content_button button{
+.content_button button {
     border-radius: 22px;
     border: 1px solid wheat;
     margin: 0px 5px;
@@ -48,7 +55,7 @@ content_button
 }
 
 
-.contact{
+.contact {
     display: flex;
     background-color: red;
     justify-content: space-between;
@@ -56,7 +63,7 @@ content_button
     padding: 15px 10px;
 }
 
-.sns_icons{
+.sns_icons {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,25 +1,32 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
 } from "react-router-dom";
 import Header from "./components/header/header";
 import ItemList from "./components/item-list/item-list";
 import Footer from "./components/footer/footer"
+import Login from "./components/login/login";
 
 function App() {
-  return (
-  <Router>
-    <Header/>
-    <ItemList/>
-    <Switch>
-
-    </Switch>
-    <Footer/>
-  </Router>
-  );
+    return (
+        <main className="App">
+            <Router>
+                <Switch>
+                    <Route path="/login">
+                        <Login/>
+                    </Route>
+                    <Route path="/">
+                        <Header/>
+                        <ItemList/>
+                    </Route>
+                </Switch>
+                <Footer/>
+            </Router>
+        </main>
+    );
 }
 
 export default App;
