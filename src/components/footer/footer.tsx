@@ -1,10 +1,9 @@
-import styles from './footer.module.css';
+import styles from './footer.module.scss';
 
 
 export default function Footer() {
     return (
         <footer className={styles.footer}>
-
             <div className={styles.container}>
                 <div className={styles.content}>
                     <div className={styles.content_main}>
@@ -22,13 +21,12 @@ export default function Footer() {
                 </div>
                 <div className={styles.contact}>
                     <div className={styles.contact_main}>
-                        <span>Contact us</span>
-                        <span>서울시 성북구 돈암동</span>
+                        <div>Contact us 서울시 성북구 돈암동</div>
                         <div>COPYRIGHT ClUBCROCHET ALL RIGHTS RESERVED</div>
                     </div>
                     <ul className={styles.sns_icons}>
-                        <li className="sns_icon"><img src="/icon/mail.png"></img></li>
-                        <li className="sns_icon"><img src="/icon/insta.png"></img></li>
+                        <li className={styles.sns_icon}><img src="assets/icon/mail.png"></img></li>
+                        <li className={styles.sns_icon}><img src="assets/icon/insta.png"></img></li>
                     </ul>
                 </div>
             </div>
