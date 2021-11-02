@@ -13,7 +13,7 @@ export default function Login(props: LoginProps) {
         <div className={styles.container}>
             <div className={styles.login_container}>
                 <div>
-                    <img src="https://res.kurly.com/images/marketkurly/logo/logo_x2.png" alt=""/>
+                    <h1>로그인</h1>
                 </div>
                 <form className={styles.login_form}>
                     <div className={styles.login_input}><input placeholder="이메일" type="text"/></div>

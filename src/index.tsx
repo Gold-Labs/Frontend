@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './reset.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import AuthService from './service/authservice'
+const authService = new AuthService()
 ReactDOM.render(
     <React.StrictMode>
-        <App/>
+        <App authService={authService}/>
     </React.StrictMode>,
     document.getElementById('root')
 );
