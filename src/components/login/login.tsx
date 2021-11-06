@@ -3,6 +3,7 @@ import styles from './login.module.scss'
 import {ReactComponent as KakaoLogo} from "./kakao.svg";
 import {ReactComponent as NaverLogo} from "./naver.svg";
 import {Link} from "react-router-dom";
+import { env } from 'process';
 
 interface LoginProps {
 
@@ -16,6 +17,7 @@ export default function Login(props: LoginProps) {
                     <h1>로그인</h1>
                 </div>
                 <form className={styles.login_form}>
+                    {/*input 자체를 useinput 으로 바꾸는 것도 좋을 듯??*/}
                     <div className={styles.login_input}><input placeholder="이메일" type="text"/></div>
                     <div className={styles.login_input}><input placeholder="비밀번호" type="text"/></div>
                     <button className={styles.login_btn}>로그인</button>
@@ -36,7 +38,18 @@ export default function Login(props: LoginProps) {
                     </li>
                     <li>
                         <button className={styles.social_login_btn}>
+                            <a href={`http://${process.env.REACT_APP_CLIENT_URL}/kakao`}>
                             <KakaoLogo/>
+                            </a>
+                            
+                        </button>
+                    </li>
+                    <li>
+                        <button className={styles.social_login_btn}>
+                            <a href={`http://${process.env.REACT_APP_CLIENT_URL}/google`}>
+                            <KakaoLogo/>
+                            </a>
+                            
                         </button>
                     </li>
                 </ul>

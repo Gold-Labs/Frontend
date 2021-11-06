@@ -8,18 +8,29 @@ import Header from "./components/header/header";
 import Footer from "./components/footer/footer"
 import MainPage from "./pages/main";
 import LoginPage from "./pages/login";
-import AuthService from "./service/authservice";
 import LoginCallback from "./pages/login-callback";
+import AuthService from "./service/authservice";
+import { UserInfo } from "./type/UserInfo";
 
-interface  AppProps{
-    authService: AuthService
+interface AppProps {
+    authService: AuthService;
 }
 
+
+
 function App({authService}:AppProps) {
-    const [loginState, setLoginState] = useState(false)
+    const login = async()=>{
+        const token =  localStorage.getItem('key')
+        // 토큰 있으면 로그인 , 없으면 로그아웃 시켜버리면 됨 
+        if (token){
+            const loginResult =  await authService.getProfile(token)
+            setLoginState(loginResult)
+        }
+    }
+
+    const [loginState, setLoginState] = useState<UserInfo>(null)
     useEffect(()=>{
-          const loginResult = authService.login()
-    setLoginState(loginResult)
+        login()  
     },[])
   
 
