@@ -1,38 +1,42 @@
-@mixin box{
-    background-color: blue;
+@mixin box {
+  background-color: blue;
 }
 
-@mixin flex-center{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-@mixin large-input{
-    border :1px solid #dbdbdb;
-    padding: 13px 15px 14px;
-    border-radius: 4px 4px 0px 0px;
+@mixin large-input {
+  border: 1px solid #dbdbdb;
+  padding: 13px 15px 14px;
+  border-radius: 4px 4px 0px 0px;
 }
 @mixin full-size {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 @mixin flex-wrap {
-    display: flex;
-    /* Put a item in the next row when previous cards take all width */
-    flex-wrap: wrap;
+  display: flex;
+  /* Put a item in the next row when previous cards take all width */
+  flex-wrap: wrap;
 }
 
 @mixin cards__item {
-    /* There will be 4 cards per row */
-    flex-basis: 25%;
+  /* There will be 4 cards per row */
+  flex-basis: 25%;
 }
 
-@mixin content-container{
-    max-width: 1050px;
-    margin: auto;
+@mixin content-container {
+  max-width: 1050px;
+  margin: auto;
 }
 
-@mixin flex-col{
-    display: flex;
-    flex-direction: column;
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin main-color {
+  background-color: #edece8;
 }

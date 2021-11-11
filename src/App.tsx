@@ -35,7 +35,7 @@ function App({authService}:AppProps) {
   
 
     return (
-        <main className="App">
+        <main className="App" style={{backgroundColor:'#edece8'}}>
             <Router>
             <Header loginState={loginState} setLoginState={setLoginState}/>
                 <Switch>

@@ -13,16 +13,16 @@ function LoginHeader({loginState,setLoginState}:HeaderProps){
     if (loginState){
         return (
             <ul className={styles.user_menu}>
-            <li className={styles.user_menu_item}><button onClick={logout}>로그아웃</button></li>
-            <li className={styles.user_menu_item}>고객센터</li>
+                <li className={styles.user_menu_item}><button onClick={logout}>로그아웃</button></li>
+                <li className={styles.user_menu_item}>고객센터</li>
             </ul>
         )
     }else{
         return (
             <ul className={styles.user_menu}>
-            <li className={styles.user_menu_item}>회원가입</li>
-            <li className={styles.user_menu_item}><Link to="/login">로그인</Link></li>
-            <li className={styles.user_menu_item}>고객센터</li>
+                <li className={styles.user_menu_item}>회원가입</li>
+                <li className={styles.user_menu_item}><Link to="/login">로그인</Link></li>
+                <li className={styles.user_menu_item}>고객센터</li>
             </ul>
         )
     }
@@ -33,9 +33,9 @@ export default function Header(props:HeaderProps) {
     return (
         <div className={styles.header_container}>
                 <LoginHeader {...props} />
-            <div>
-                <img src="https://res.kurly.com/images/marketkurly/logo/logo_x2.png" alt=""/>
-            </div>
+            <>
+                <img className={styles.logo} src="assets/images/logo/club-crochet.png" alt=""/>
+            </>
             <nav className={styles.nav_container}>
                 <ul className={styles.nav_menu}>
                     <li className={styles.nav_item}>전체 카테고리</li>
