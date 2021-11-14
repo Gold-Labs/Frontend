@@ -1,5 +1,5 @@
 export type UserInfo ={
-    username: string
+    userId: string
     email: string
 } | null
 

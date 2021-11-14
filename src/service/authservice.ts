@@ -5,9 +5,8 @@ export default class AuthService{
     private instance: AxiosInstance
     constructor(){
         this.instance = axios.create({
-            baseURL: process.env.REACT_APP_CLIENT_URL,
+            baseURL: "http://localhost:3000/auth",
         })
-        console.log(process.env.REACT_APP_CLIENT_URL)
     }
 
     async getProfile(token:string){

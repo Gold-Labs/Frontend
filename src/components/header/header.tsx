@@ -13,6 +13,7 @@ function LoginHeader({loginState,setLoginState}:HeaderProps){
     if (loginState){
         return (
             <ul className={styles.user_menu}>
+                <li className={styles.user_menu_item}>환영합니다. {loginState.email}</li>
                 <li className={styles.user_menu_item}><button onClick={logout}>로그아웃</button></li>
                 <li className={styles.user_menu_item}>고객센터</li>
             </ul>

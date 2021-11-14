@@ -35,7 +35,7 @@ export default function Login(props: LoginProps) {
                     </li>
                     <li>
                         <button className={styles.social_login_btn}>
-                            <a href={`http://${process.env.REACT_APP_CLIENT_URL}/kakao`}>
+                            <a href={`http://localhost:3000/kakao`}>
                             <KakaoLogo/>
                             </a>
                             
@@ -43,7 +43,7 @@ export default function Login(props: LoginProps) {
                     </li>
                     <li>
                         <button className={styles.social_login_btn}>
-                            <a href={`http://${process.env.REACT_APP_CLIENT_URL}/google`}>
+                            <a href={`http://localhost:3000/google`}>
                             <KakaoLogo/>
                             </a>
                             
