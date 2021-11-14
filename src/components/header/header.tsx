@@ -9,7 +9,10 @@ interface  HeaderProps{
 
 
 function LoginHeader({loginState,setLoginState}:HeaderProps){
-    const logout = ()=>{setLoginState(null)}
+    const logout = ()=>{
+        setLoginState(null)
+        localStorage.removeItem("key")
+    }
     if (loginState){
         return (
             <ul className={styles.user_menu}>
@@ -35,7 +38,7 @@ export default function Header(props:HeaderProps) {
         <div className={styles.header_container}>
                 <LoginHeader {...props} />
             <>
-                <img className={styles.logo} src="assets/images/logo/club-crochet.png" alt=""/>
+                <img className={styles.logo} src="/assets/images/logo/club-crochet.png" alt=""/>
             </>
             <nav className={styles.nav_container}>
                 <ul className={styles.nav_menu}>

@@ -1,5 +1,6 @@
 
 import axios, { AxiosInstance } from "axios";
+import { UserInfo } from "../type/UserInfo";
 
 export default class AuthService{
     private instance: AxiosInstance
@@ -14,6 +15,14 @@ export default class AuthService{
             headers: {
               'Authorization': `Bearer ${token}`
             }})
+        return response.data
+    }
+
+    async login(user:UserInfo):Promise<{access_token:string}>{
+        
+        const response = await this.instance.post("/login",{
+            ...user
+        })
         return response.data
     }
 }

@@ -40,7 +40,7 @@ function App({authService}:AppProps) {
             <Header loginState={loginState} setLoginState={setLoginState}/>
                 <Switch>
                     <Route path="/login/redirect" render={() => (<LoginCallback authService={authService} setLoginState={setLoginState}  />)}/>
-                    <Route path="/login" component={LoginPage}/>
+                    <Route path="/login" render={()=> (<LoginPage authService={authService}/>)}/>
                     <Route path="/" component={MainPage}/>
                 </Switch>
                 <Footer/>
