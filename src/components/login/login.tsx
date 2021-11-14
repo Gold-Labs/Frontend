@@ -4,15 +4,16 @@ import {ReactComponent as KakaoLogo} from "./kakao.svg";
 import {ReactComponent as NaverLogo} from "./naver.svg";
 import {Link, Redirect, useHistory} from "react-router-dom";
 import AuthService from '../../service/authservice';
+import { UserInfo } from '../../type/UserInfo';
 
 interface LoginProps {
     authService: AuthService;
+    setLoginState:React.Dispatch<React.SetStateAction<UserInfo>>
 }
 
-export default function Login({authService}: LoginProps) {
+export default function Login({authService,setLoginState}: LoginProps) {
     const history =useHistory()
         
-    
     async function login(event:React.SyntheticEvent){
         event.preventDefault()
         const form = event.target as typeof event.target & {
@@ -22,10 +23,16 @@ export default function Login({authService}: LoginProps) {
         const email = form.email.value; 
         const password = form.password.value; 
         const user = {email,password}
-        const result = await authService.login(user)
-        const {access_token} = result
-        localStorage.setItem('key',access_token)
-        history.push('/')
+        try{
+            const result = await authService.login(user)
+            const {access_token} = result
+            localStorage.setItem('key',access_token)
+            setLoginState(user)
+            history.push('/')
+        }catch(error){
+            console.log(error)
+        }
+        
     }
 
     return (
@@ -40,7 +47,7 @@ export default function Login({authService}: LoginProps) {
 
                     <section className={styles.user_info_link_container}>
                         <Link to="/login">비밀번호 재설정</Link>
-                        <Link to="/login">회원가입</Link>
+                        <Link to="/register">회원가입</Link>
                     </section>
                 </form>
                 <div className={styles.social_login_des}>

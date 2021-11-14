@@ -3,6 +3,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
+    useHistory,
 } from "react-router-dom";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer"
@@ -34,7 +35,7 @@ function App({authService}:AppProps) {
     useEffect(()=>{
         login()  
     },[])
-  
+    
 
     return (
         <main className="App" style={{backgroundColor:'#edece8'}}>
@@ -42,9 +43,9 @@ function App({authService}:AppProps) {
             <Header loginState={loginState} setLoginState={setLoginState}/>
                 <Switch>
                     <Route path="/login/redirect" render={() => (<LoginCallback authService={authService} setLoginState={setLoginState}  />)}/>
-                    <Route path="/login" render={()=> (<LoginPage authService={authService}/>)}/>
+                    <Route path="/login" render={()=> (<LoginPage setLoginState={setLoginState} authService={authService}/>)}/>
                     <Route path="/post" component={PostPage}/>
-                    <Route path="/register" render={()=>(<RegisterPage authService={authService}/>)}/>
+                    <Route path="/register" render={()=>(<RegisterPage setLoginState={setLoginState} authService={authService}/>)}/>
                     <Route path="/" component={MainPage}/>
                 </Switch>
                 <Footer/>

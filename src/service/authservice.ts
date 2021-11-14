@@ -6,7 +6,7 @@ export default class AuthService{
     private instance: AxiosInstance
     constructor(){
         this.instance = axios.create({
-            baseURL: process.env.TEST+"/auth" ?? process.env.REACT_APP_CLIENT_URL +"/auth",
+            baseURL: process.env.REACT_APP_TEST+"/auth" ?? process.env.REACT_APP_CLIENT_URL +"/auth",
         })
     }
 

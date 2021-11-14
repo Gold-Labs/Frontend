@@ -24,7 +24,7 @@ function LoginHeader({loginState,setLoginState}:HeaderProps){
     }else{
         return (
             <ul className={styles.user_menu}>
-                <li className={styles.user_menu_item}>회원가입</li>
+                <li className={styles.user_menu_item}><Link to="/register">회원가입</Link></li>
                 <li className={styles.user_menu_item}><Link to="/login">로그인</Link></li>
                 <li className={styles.user_menu_item}>고객센터</li>
             </ul>
