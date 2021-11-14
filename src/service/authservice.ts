@@ -6,7 +6,7 @@ export default class AuthService{
     private instance: AxiosInstance
     constructor(){
         this.instance = axios.create({
-            baseURL: "http://localhost:3000/auth",
+            baseURL: process.env.TEST+"/auth" ?? process.env.REACT_APP_CLIENT_URL +"/auth",
         })
     }
 
@@ -25,4 +25,26 @@ export default class AuthService{
         })
         return response.data
     }
+    async checkDuplicate(email:string){
+        try{
+            const response = await this.instance.post("/duplicate-check",{
+                email
+            })
+            return response.data
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    async register(payload:{email:string,name:string,password:string}){
+        try{
+            const response = await this.instance.post('/register',{
+                ...payload
+            })
+            return response.data
+        }catch(error){
+            console.log(error)
+        }
+    }
+
 }
