@@ -1,0 +1,37 @@
+@import "../../mixin";
+
+.container{
+    @include full-size;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.label{
+    font-size: 2rem;
+    margin: 2rem;
+}
+
+.input_container{
+    @include flex-center;
+}
+
+.input{
+    width: 250px;
+    height: 40px;
+    margin-right: 2rem;
+}
+
+.notchecked_input{
+    margin-right: 9.5rem;
+    width: 250px;
+    height: 40px;
+}
+
+.register_btn{
+    font-size: 1.5rem;
+    size: 1rem;
+    border: 1px solid black;
+    padding: 1rem;
+}

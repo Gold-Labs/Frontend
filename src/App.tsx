@@ -11,6 +11,8 @@ import LoginPage from "./pages/login";
 import LoginCallback from "./pages/login-callback";
 import AuthService from "./service/authservice";
 import { UserInfo } from "./type/UserInfo";
+import { PostPage } from "./pages/good";
+import { RegisterPage } from "./pages/register";
 
 interface AppProps {
     authService: AuthService;
@@ -41,6 +43,8 @@ function App({authService}:AppProps) {
                 <Switch>
                     <Route path="/login-callback" render={() => (<LoginCallback authService={authService} setLoginState={setLoginState}  />)}/>
                     <Route path="/login" component={LoginPage}/>
+                    <Route path="/post" component={PostPage}/>
+                    <Route path="/register" render={()=>(<RegisterPage authService={authService}/>)}/>
                     <Route path="/" component={MainPage}/>
                 </Switch>
                 <Footer/>

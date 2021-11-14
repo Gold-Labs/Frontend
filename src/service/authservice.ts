@@ -5,9 +5,8 @@ export default class AuthService{
     private instance: AxiosInstance
     constructor(){
         this.instance = axios.create({
-            baseURL: process.env.REACT_APP_CLIENT_URL,
+            baseURL: process.env.TEST? process.env.TEST:process.env.REACT_APP_CLIENT_URL,
         })
-        console.log(process.env.REACT_APP_CLIENT_URL)
     }
 
     async getProfile(token:string){
@@ -17,4 +16,27 @@ export default class AuthService{
             }})
         return response.data
     }
+
+    async checkDuplicate(email:string){
+        try{
+            const response = await this.instance.post("/auth/duplicate-check",{
+                email
+            })
+            return response.data
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    async register(payload:{email:string,name:string,password:string}){
+        try{
+            const response = await this.instance.post('/auth/register',{
+                ...payload
+            })
+            return response.data
+        }catch(error){
+            console.log(error)
+        }
+    }
+
 }
