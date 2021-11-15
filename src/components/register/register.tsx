@@ -3,12 +3,18 @@ import React from "react";
 import AuthService from '../../service/authservice'
 import { RegisterInput } from './register-Input'
 import styles from './register.module.scss'
+import { useHistory } from 'react-router-dom';
+import { UserInfo } from '../../type/UserInfo';
 
 interface RegisterPrpops{
   authService:AuthService
+  setLoginState:React.Dispatch<React.SetStateAction<UserInfo>>
 }
 
 export const Register = (props:RegisterPrpops) =>{
+    const {authService,setLoginState} = props
+    const history = useHistory()
+    
     const [inputs,setInputs] = useState({
         email:"",
         passwordCheck:"",
@@ -16,7 +22,7 @@ export const Register = (props:RegisterPrpops) =>{
         name:"",
     })
     const [duplicateCheck,setDuplicateCheck] = useState(false)
-    const {authService} = props
+    
 
     const onDateChange = (event:React.ChangeEvent<HTMLInputElement>) => {
         const { value, name } = event.target;
@@ -26,10 +32,16 @@ export const Register = (props:RegisterPrpops) =>{
         });
     }
 
-    const emailDupulicateCheck = async(email:string) =>{
+    const emailDupulicateCheck = async(e:any) =>{
+        e.preventDefault()
         try{
-            await authService.checkDuplicate(email)
-            setDuplicateCheck(true)
+            const {email} = inputs
+            const result =  await authService.checkDuplicate(email)
+            const message = result? "사용가능한 이메일 입니다.":"중복된 이메일입니다." 
+            alert(message)
+            setDuplicateCheck(result)
+            
+
         }catch(err){
             alert("중복된 이메일 입니다.")
         }
@@ -37,21 +49,26 @@ export const Register = (props:RegisterPrpops) =>{
 
     const register = async(event:any) =>{
         event.preventDefault()
-        try{
-            const {email,passwordCheck,password,name} = inputs
-            if(!duplicateCheck) {alert("회원가입이 실패했습니다.");return}
-            if(!email) {alert("이메일을 작성해주세요");return}
-            if(!passwordCheck) {alert("패스워드 확인을 작성해주세요");return}
-            if(!password) {alert("패스워드를 작성해주세요");return}
-            if(!name) {alert("이름을 작성해주세요");return}
-            if(passwordCheck !==password) {alert("비밀번호 확인이 다릅니다.");return}
+        const {email,passwordCheck,password,name} = inputs
+        if(!duplicateCheck) {alert("회원가입이 실패했습니다.");return}
+        if(!email) {alert("이메일을 작성해주세요");return}
+        if(!passwordCheck) {alert("패스워드 확인을 작성해주세요");return}
+        if(!password) {alert("패스워드를 작성해주세요");return}
+        if(!name) {alert("이름을 작성해주세요");return}
+        if(passwordCheck !==password) {alert("비밀번호 확인이 다릅니다.");return}
 
-            const payload = {
-                email, 
-                password,
-                name
-            }
-            // await authService.register(payload)
+        const payload = {
+            email, 
+            password,
+            name
+        }
+
+        try{
+           
+            await authService.register(payload)
+            history.push('/login')
+            
+
         }catch(error){
             alert("회원가입이 실패했습니다.")
         }

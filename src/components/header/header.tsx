@@ -9,10 +9,14 @@ interface  HeaderProps{
 
 
 function LoginHeader({loginState,setLoginState}:HeaderProps){
-    const logout = ()=>{setLoginState(null)}
+    const logout = ()=>{
+        setLoginState(null)
+        localStorage.removeItem("key")
+    }
     if (loginState){
         return (
             <ul className={styles.user_menu}>
+                <li className={styles.user_menu_item}>환영합니다. {loginState.email}</li>
                 <li className={styles.user_menu_item}><button onClick={logout}>로그아웃</button></li>
                 <li className={styles.user_menu_item}>고객센터</li>
             </ul>
@@ -20,7 +24,7 @@ function LoginHeader({loginState,setLoginState}:HeaderProps){
     }else{
         return (
             <ul className={styles.user_menu}>
-                <li className={styles.user_menu_item}>회원가입</li>
+                <li className={styles.user_menu_item}><Link to="/register">회원가입</Link></li>
                 <li className={styles.user_menu_item}><Link to="/login">로그인</Link></li>
                 <li className={styles.user_menu_item}>고객센터</li>
             </ul>
@@ -34,7 +38,7 @@ export default function Header(props:HeaderProps) {
         <div className={styles.header_container}>
                 <LoginHeader {...props} />
             <>
-                <img className={styles.logo} src="assets/images/logo/club-crochet.png" alt=""/>
+                <img className={styles.logo} src="/assets/images/logo/club-crochet.png" alt=""/>
             </>
             <nav className={styles.nav_container}>
                 <ul className={styles.nav_menu}>
