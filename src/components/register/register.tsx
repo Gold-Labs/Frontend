@@ -5,14 +5,15 @@ import { RegisterInput } from './register-Input'
 import styles from './register.module.scss'
 import { useHistory } from 'react-router-dom';
 import { UserInfo } from '../../type/UserInfo';
+import { useSetRecoilState } from 'recoil';
+import { UserInfoState } from '../../state';
 
 interface RegisterPrpops{
   authService:AuthService
-  setLoginState:React.Dispatch<React.SetStateAction<UserInfo>>
 }
 
 export const Register = (props:RegisterPrpops) =>{
-    const {authService,setLoginState} = props
+    const {authService} = props
     const history = useHistory()
     
     const [inputs,setInputs] = useState({

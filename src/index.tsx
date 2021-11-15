@@ -4,10 +4,13 @@ import "./reset.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AuthService from "./service/authservice";
+import { RecoilRoot } from "recoil";
 const authService = new AuthService();
 ReactDOM.render(
   <React.StrictMode>
+    <RecoilRoot>
     <App authService={authService} />
+    </RecoilRoot>
   </React.StrictMode>,
   document.getElementById("root")
 );

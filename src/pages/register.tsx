@@ -4,8 +4,6 @@ import { UserInfo } from "../type/UserInfo"
 
 interface RegisterPageProps{
     authService:AuthService
-    setLoginState:React.Dispatch<React.SetStateAction<UserInfo>>
-
 }
 
 export const RegisterPage =(props:RegisterPageProps) =>{

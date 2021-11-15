@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    useHistory,
 } from "react-router-dom";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer"
@@ -11,27 +10,27 @@ import MainPage from "./pages/main";
 import LoginPage from "./pages/login";
 import LoginCallback from "./pages/login-callback";
 import AuthService from "./service/authservice";
-import { UserInfo } from "./type/UserInfo";
-import { PostPage } from "./pages/good";
 import { RegisterPage } from "./pages/register";
+import {  useSetRecoilState } from "recoil";
+import { UserInfoState } from "./state";
+import { GoodsPage } from "./pages/goods";
 
 interface AppProps {
     authService: AuthService;
 }
 
 
-
 function App({authService}:AppProps) {
+    const setUserInfo = useSetRecoilState(UserInfoState)
+
     const login = async()=>{
         const token =  localStorage.getItem('key')
-        // 토큰 있으면 로그인 , 없으면 로그아웃 시켜버리면 됨 
         if (token){
             const loginResult =  await authService.getProfile(token)
-            setLoginState(loginResult)
+            setUserInfo(loginResult)
         }
     }
 
-    const [loginState, setLoginState] = useState<UserInfo>(null)
     useEffect(()=>{
         login()  
     },[])
@@ -40,12 +39,12 @@ function App({authService}:AppProps) {
     return (
         <main className="App" style={{backgroundColor:'#edece8'}}>
             <Router>
-            <Header loginState={loginState} setLoginState={setLoginState}/>
+            <Header/>
                 <Switch>
-                    <Route path="/login/redirect" render={() => (<LoginCallback authService={authService} setLoginState={setLoginState}  />)}/>
-                    <Route path="/login" render={()=> (<LoginPage setLoginState={setLoginState} authService={authService}/>)}/>
-                    <Route path="/post" component={PostPage}/>
-                    <Route path="/register" render={()=>(<RegisterPage setLoginState={setLoginState} authService={authService}/>)}/>
+                    <Route path="/login/redirect" render={() => (<LoginCallback authService={authService} />)}/>
+                    <Route path="/login" render={() => (<LoginPage authService={authService}/>)}/>
+                    <Route path="/goods" component={GoodsPage}/>
+                    <Route path="/register" render={()=>(<RegisterPage authService={authService}/>)}/>
                     <Route path="/" component={MainPage}/>
                 </Switch>
                 <Footer/>

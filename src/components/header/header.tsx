@@ -1,22 +1,23 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { UserInfoState } from '../../state';
 import { UserInfo } from '../../type/UserInfo';
 import styles from './header.module.scss';
 interface  HeaderProps{
-    loginState: Record<string,string> | null
-    setLoginState:React.Dispatch<React.SetStateAction<UserInfo>>
 }
 
 
-function LoginHeader({loginState,setLoginState}:HeaderProps){
+function LoginHeader(props:HeaderProps){
+    const [userInfo,setUserInfo] = useRecoilState(UserInfoState)
     const logout = ()=>{
-        setLoginState(null)
+        setUserInfo(null)
         localStorage.removeItem("key")
     }
-    if (loginState){
+    if (userInfo){
         return (
             <ul className={styles.user_menu}>
-                <li className={styles.user_menu_item}>환영합니다. {loginState.email}</li>
+                <li className={styles.user_menu_item}>환영합니다. {userInfo.email}</li>
                 <li className={styles.user_menu_item}><button onClick={logout}>로그아웃</button></li>
                 <li className={styles.user_menu_item}>고객센터</li>
             </ul>

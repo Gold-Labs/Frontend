@@ -2,18 +2,19 @@ import * as React from 'react';
 import styles from './login.module.scss'
 import {ReactComponent as KakaoLogo} from "./kakao.svg";
 import {ReactComponent as NaverLogo} from "./naver.svg";
-import {Link, Redirect, useHistory} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import AuthService from '../../service/authservice';
-import { UserInfo } from '../../type/UserInfo';
+import {  useSetRecoilState } from 'recoil';
+import { UserInfoState } from '../../state';
 
 interface LoginProps {
     authService: AuthService;
-    setLoginState:React.Dispatch<React.SetStateAction<UserInfo>>
 }
 
-export default function Login({authService,setLoginState}: LoginProps) {
+export default function Login({authService}: LoginProps) {
+    const setUserInfo = useSetRecoilState(UserInfoState)
+    
     const history =useHistory()
-        
     async function login(event:React.SyntheticEvent){
         event.preventDefault()
         const form = event.target as typeof event.target & {
@@ -27,7 +28,7 @@ export default function Login({authService,setLoginState}: LoginProps) {
             const result = await authService.login(user)
             const {access_token} = result
             localStorage.setItem('key',access_token)
-            setLoginState(user)
+            setUserInfo(user)
             history.push('/')
         }catch(error){
             console.log(error)
