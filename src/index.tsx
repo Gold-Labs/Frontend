@@ -9,7 +9,7 @@ const authService = new AuthService();
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
-    <App authService={authService} />
+      <App authService={authService} />
     </RecoilRoot>
   </React.StrictMode>,
   document.getElementById("root")
