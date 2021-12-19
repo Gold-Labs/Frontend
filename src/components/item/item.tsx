@@ -1,29 +1,62 @@
-import * as React from "react";
-import styles from "./item.module.scss";
-// import {pathToFileURL} from "url";
-interface itemProps {
+import styled from "styled-components";
+
+interface ItemsProps {
   count: number;
 }
-export default function Item(props: itemProps) {
+
+const ItemsWrapper = styled.li`
+  margin-bottom: 20px;
+`;
+const ItemsImgWrapper = styled(ItemsWrapper)`
+  width: 249px;
+  height: 320px;
+`;
+const ItemsImg = styled.img.attrs({
+  src: "assets/images/product/product-image.jpg",
+})`
+  width: 100%;
+  height: 100%;
+`;
+
+const ItemsInfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  margin-top: 10px;
+`;
+
+const ItemsInfo = styled.span<{ marginBottom: string; weight: string }>`
+  margin-bottom: ${(props) => props.marginBottom};
+  font-weight: ${(props) => props.weight};
+`;
+
+const ItemsDC = styled.span`
+  color: orange;
+`;
+
+const ItemsCost = styled.span`
+  text-decoration: line-through;
+  color: gray;
+  font-size: 14px;
+`;
+
+export default function Items(props: ItemsProps) {
   return (
     // <!-- A item with given width -->
-    <li className={styles.goods_container}>
-      <div className={styles.goods_img_container}>
-        <img
-          className={styles.goods_img}
-          src="assets/images/product/product-image.jpg"
-          alt=""
-        />
-      </div>
-      <div className={styles.info_goods}>
-        <span className={styles.name}>전통주</span>
-        <span className={styles.price}>
-          <span className={styles.dc}>3%</span>
+    <ItemsWrapper>
+      <ItemsImgWrapper>
+        <ItemsImg />
+      </ItemsImgWrapper>
+      <ItemsInfoWrapper>
+        <ItemsInfo marginBottom="10px" weight="normal">
+          전통주
+        </ItemsInfo>
+        <ItemsInfo marginBottom="5px" weight="bold">
+          <ItemsDC>3%</ItemsDC>
           5200원
-        </span>
-        <span className={styles.cost}>5400원</span>
-      </div>
-    </li>
-    // <!-- Repeat other cards -->
+        </ItemsInfo>
+        <ItemsCost>5400원</ItemsCost>
+      </ItemsInfoWrapper>
+    </ItemsWrapper>
   );
 }
