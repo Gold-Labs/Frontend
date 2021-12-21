@@ -1,10 +1,36 @@
-import * as React from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
+import styled from "styled-components";
 import { UserInfoState } from "../../state";
-import { UserInfo } from "../../type/UserInfo";
-import styles from "./header.module.scss";
 interface HeaderProps {}
+
+const UserMenu = styled.ul`
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  padding: 1rem;
+`;
+
+const UserMenuItem = styled.li`
+  margin-left: 10px;
+`;
+
+const HeaderWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.6rem;
+  max-width: 1050px;
+  margin: auto;
+`;
+
+const MainLogo = styled.img.attrs({
+  src: "/assets/images/logo/club-crochet.png",
+})`
+  width: 200px;
+  height: 200px;
+`;
 
 function LoginHeader(props: HeaderProps) {
   const [userInfo, setUserInfo] = useRecoilState(UserInfoState);
@@ -12,49 +38,33 @@ function LoginHeader(props: HeaderProps) {
     setUserInfo(null);
     localStorage.removeItem("key");
   };
-  if (userInfo) {
-    return (
-      <ul className={styles.user_menu}>
-        <li className={styles.user_menu_item}>환영합니다. {userInfo.email}</li>
-        <li className={styles.user_menu_item}>
-          <button onClick={logout}>로그아웃</button>
-        </li>
-        <li className={styles.user_menu_item}>고객센터</li>
-      </ul>
-    );
-  } else {
-    return (
-      <ul className={styles.user_menu}>
-        <li className={styles.user_menu_item}>
-          <Link to="/register">회원가입</Link>
-        </li>
-        <li className={styles.user_menu_item}>
-          <Link to="/login">로그인</Link>
-        </li>
-        <li className={styles.user_menu_item}>고객센터</li>
-      </ul>
-    );
-  }
+
+  return userInfo ? (
+    <UserMenu>
+      <UserMenuItem>환영합니다. {userInfo.email}</UserMenuItem>
+      <UserMenuItem>
+        <button onClick={logout}>로그아웃</button>
+      </UserMenuItem>
+      <UserMenuItem>고객센터</UserMenuItem>
+    </UserMenu>
+  ) : (
+    <UserMenu>
+      <UserMenuItem>
+        <Link to="/register">회원가입</Link>
+      </UserMenuItem>
+      <UserMenuItem>
+        <Link to="/login">로그인</Link>
+      </UserMenuItem>
+      <UserMenuItem>고객센터</UserMenuItem>
+    </UserMenu>
+  );
 }
 
 export default function Header(props: HeaderProps) {
   return (
-    <div className={styles.header_container}>
+    <HeaderWrapper>
       <LoginHeader {...props} />
-      <>
-        <img
-          className={styles.logo}
-          src="/assets/images/logo/club-crochet.png"
-          alt=""
-        />
-      </>
-      <nav className={styles.nav_container}>
-        <ul className={styles.nav_menu}>
-          <li className={styles.nav_item}>전체 카테고리</li>
-          <li className={styles.nav_item}>신상품</li>
-          <li className={styles.nav_item}>베스트</li>
-        </ul>
-      </nav>
-    </div>
+      <MainLogo />
+    </HeaderWrapper>
   );
 }
