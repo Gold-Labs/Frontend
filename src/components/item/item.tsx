@@ -9,7 +9,8 @@ const ItemsWrapper = styled.li`
 `;
 const ItemsImgWrapper = styled(ItemsWrapper)`
   width: 249px;
-  height: 320px;
+  /* height: 320px; */
+  /* height: 200px; */
 `;
 const ItemsImg = styled.img.attrs({
   src: "assets/images/product/product-image.jpg",

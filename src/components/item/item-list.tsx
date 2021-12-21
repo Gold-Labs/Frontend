@@ -6,6 +6,8 @@ const ItemsList = styled.ul`
   margin-right: -8px;
   gap: 10px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   max-width: 1050px;
   margin: auto;

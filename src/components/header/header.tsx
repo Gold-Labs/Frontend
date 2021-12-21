@@ -28,8 +28,8 @@ const HeaderWrapper = styled.div`
 const MainLogo = styled.img.attrs({
   src: "/assets/images/logo/club-crochet.png",
 })`
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
 `;
 
 function LoginHeader(props: HeaderProps) {

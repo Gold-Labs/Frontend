@@ -4,16 +4,20 @@ interface NavbarProps {}
 
 const NavbarWrapper = styled.nav`
   width: 100%;
+  max-width: 1050px;
+  margin: auto;
 `;
 
 const NavbarMenu = styled.ul`
   display: flex;
   width: 100%;
   justify-content: start;
+  font-size: 2rem;
+  padding: 1rem;
 `;
 
 const NavbarItem = styled.li`
-  margin-left: 10px;
+  margin-right: 10rem;
 `;
 
 function Navbar(props: NavbarProps) {
