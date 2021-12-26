@@ -1,17 +1,10 @@
-import * as React from 'react';
-import Login from '../components/login/login';
-import AuthService from '../service/authservice';
-// import {pathToFileURL} from "url";
+import Login from "../components/login/login";
+import AuthService from "../service/authservice";
 
-interface  LoginPageProps{
-    authService: AuthService
+interface LoginPageProps {
+  authService: AuthService;
 }
 
-export default function LoginPage (props:LoginPageProps) {
-    return (
-        <Login {...props}/>
-    );
+export default function LoginPage(props: LoginPageProps) {
+  return <Login {...props} />;
 }
-
-
-
